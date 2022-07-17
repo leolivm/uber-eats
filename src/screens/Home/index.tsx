@@ -3,16 +3,19 @@ import { SafeAreaView, View, StyleSheet, ScrollView } from 'react-native'
 
 import { YELP_API_KEY } from '@env'
 
-import { Category } from '../../components/Category'
-import { SearchBar } from '../../components/SearchBar'
-import { HeaderTabs } from '../../components/HeaderTabs'
-import { RestaurantItem } from '../../components/RestaurantItem'
+import {
+  Category,
+  SearchBar,
+  HeaderTabs,
+  RestaurantItem,
+} from '../../components'
 
 import { restaurantMockData } from '../../components/RestaurantItem/restaurantMockData'
 import { RestaurantsType } from '../../types'
 
 export const Home: FC = () => {
-  const [restaurants, setRestaurants] = useState<RestaurantsType>(restaurantMockData)
+  const [restaurants, setRestaurants] =
+    useState<RestaurantsType>(restaurantMockData)
 
   const getRestaurantsFromYelp = () => {
     const yelpUrl = `https://api.yelp.com/v3/businesses/search?term=restaurants&location=SanDiego`

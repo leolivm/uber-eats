@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { View, StyleSheet } from 'react-native'
 
-import { HeaderButton } from '.'
+import { HeaderButton } from './HeaderButton'
 
 export const HeaderTabs: FC = () => (
   <View style={styles.container}>

@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import { View, StyleSheet, TouchableOpacity } from 'react-native'
 
-import { RestaurantInfo } from '.'
-import { RestaurantImage } from '.'
+import { RestaurantInfo } from './RestaurantInfo'
+import { RestaurantImage } from './RestaurantImage'
 
 import { RestaurantsType } from '../../types'
 
