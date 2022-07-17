@@ -10,14 +10,19 @@ import {
   RestaurantItem,
 } from '../../components'
 
+import { useActiveTab } from '../../providers/activetab'
 import { restaurantMockData } from '../../components/RestaurantItem/restaurantMockData'
-import { RestaurantsType } from '../../types'
+
+import { RestaurantsType, BusinessType } from '../../types'
 
 export const Home: FC = () => {
   const [restaurants, setRestaurants] = useState<RestaurantsType>(restaurantMockData)
+  const [city, setCity] = useState('San Francisco')
+
+  const { activeTab } = useActiveTab()
 
   const getRestaurantsFromYelp = async () => {
-    const yelpUrl = `https://api.yelp.com/v3/businesses/search?term=restaurants&location=SanDiego`
+    const yelpUrl = `https://api.yelp.com/v3/businesses/search?term=restaurants&location=${city}`
 
     const apiOptions = {
       headers: {
@@ -27,18 +32,23 @@ export const Home: FC = () => {
 
     return fetch(yelpUrl, apiOptions)
       .then((res) => res.json())
-      .then((json) => setRestaurants(json.businesses))
+      .then((json) =>
+        setRestaurants(
+          json.businesses.filter((business: BusinessType) =>
+            business.transactions.includes(activeTab.toLowerCase())),
+        ),
+      )
   }
 
   useEffect(() => {
     getRestaurantsFromYelp()
-  }, [])
+  }, [city, activeTab])
 
   return (
     <SafeAreaView>
       <View style={styles.container}>
         <HeaderTabs />
-        <SearchBar />
+        <SearchBar cityHandler={setCity} />
       </View>
 
       <ScrollView showsVerticalScrollIndicator={false}>
