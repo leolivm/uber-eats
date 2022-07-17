@@ -4,10 +4,13 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 
+import { GOOGLE_PLACES_API_KEY } from '@env'
+
 export const SearchBar: FC = () => {
   return (
     <View style={styles.container}>
       <GooglePlacesAutocomplete
+        query={{ key: GOOGLE_PLACES_API_KEY }}
         placeholder="Search"
         styles={{
           textInput: styles.textInput,
