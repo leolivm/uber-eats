@@ -1,4 +1,5 @@
 import { FC, useEffect, useState } from 'react'
+import { Divider } from 'react-native-elements'
 import { SafeAreaView, View, StyleSheet, ScrollView } from 'react-native'
 
 import { YELP_API_KEY } from '@env'
@@ -8,6 +9,7 @@ import {
   SearchBar,
   HeaderTabs,
   RestaurantItem,
+  BottomTabs
 } from '../../components'
 
 import { useActiveTab } from '../../providers/activetab'
@@ -45,7 +47,7 @@ export const Home: FC = () => {
   }, [city, activeTab])
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.wrapper}>
       <View style={styles.container}>
         <HeaderTabs />
         <SearchBar cityHandler={setCity} />
@@ -55,11 +57,18 @@ export const Home: FC = () => {
         <Category />
         <RestaurantItem restaurants={restaurants} />
       </ScrollView>
+
+      <Divider width={1} />
+
+      <BottomTabs />
     </SafeAreaView>
   )
 }
 
 const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+  },
   container: {
     backgroundColor: '#222',
     padding: 15,

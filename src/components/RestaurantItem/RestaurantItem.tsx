@@ -5,14 +5,13 @@ import { RestaurantInfo } from './RestaurantInfo'
 import { RestaurantImage } from './RestaurantImage'
 
 import { RestaurantsType } from '../../types'
-import { getBottomSpace } from 'react-native-iphone-x-helper'
 
 type RestaurantItemProps = {
   restaurants: RestaurantsType
 }
 
 export const RestaurantItem: FC<RestaurantItemProps> = (props) => (
-  <TouchableOpacity activeOpacity={1} style={styles.touchableContainer}>
+  <TouchableOpacity activeOpacity={1}>
     {props?.restaurants?.map((item, index) => (
       <View style={styles.container} key={index}>
         <RestaurantImage source={item.image_url} />
@@ -23,10 +22,6 @@ export const RestaurantItem: FC<RestaurantItemProps> = (props) => (
 )
 
 const styles = StyleSheet.create({
-  touchableContainer: {
-    marginBottom: 30,
-    paddingBottom: getBottomSpace() + 70,
-  },
   container: {
     marginTop: 10,
     padding: 15,
