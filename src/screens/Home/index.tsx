@@ -14,10 +14,9 @@ import { restaurantMockData } from '../../components/RestaurantItem/restaurantMo
 import { RestaurantsType } from '../../types'
 
 export const Home: FC = () => {
-  const [restaurants, setRestaurants] =
-    useState<RestaurantsType>(restaurantMockData)
+  const [restaurants, setRestaurants] = useState<RestaurantsType>(restaurantMockData)
 
-  const getRestaurantsFromYelp = () => {
+  const getRestaurantsFromYelp = async () => {
     const yelpUrl = `https://api.yelp.com/v3/businesses/search?term=restaurants&location=SanDiego`
 
     const apiOptions = {
