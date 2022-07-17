@@ -41,7 +41,7 @@ export const MenuItem: FC = () => (
           <FoodImage image={food.image} />
         </View>
 
-        <Divider width={0.5} orientation="horizontal" />
+        <Divider width={0.5} orientation="horizontal" style={styles.divider} />
       </View>
     ))}
   </ScrollView>
@@ -52,5 +52,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     margin: 20,
+  },
+  divider: {
+    marginHorizontal: 20,
   },
 })
