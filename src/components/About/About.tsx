@@ -30,8 +30,6 @@ export const About: FC = () => {
 
   const formattedCategories = item.categories.map((cat) => cat.title).join(' • ')
 
-  console.log(item)
-
   const description = `${formattedCategories} ${
     yelpRestaurantInfo.price ? ' • ' + yelpRestaurantInfo.price : ''
   } • 🎫 • ${yelpRestaurantInfo.rating} ⭐️ (${yelpRestaurantInfo.reviews}+)`
