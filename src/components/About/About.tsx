@@ -28,7 +28,9 @@ export const About: FC = () => {
   const route = useRoute()
   const item = route.params as RestaurantType
 
-  const formattedCategories = item.categories.map((cat) => cat).join(' • ')
+  const formattedCategories = item.categories.map((cat) => cat.title).join(' • ')
+
+  console.log(item)
 
   const description = `${formattedCategories} ${
     yelpRestaurantInfo.price ? ' • ' + yelpRestaurantInfo.price : ''

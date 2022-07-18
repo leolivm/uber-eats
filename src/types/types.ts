@@ -1,7 +1,10 @@
 export type RestaurantType = {
   name: string
   image_url: string
-  categories: string[]
+  categories: {
+    alias: string
+    title: string
+  }[]
   price: string
   reviews: number
   rating: number
