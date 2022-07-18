@@ -1,9 +1,12 @@
 import { FC } from 'react'
 import { StyleSheet, View } from 'react-native'
+import { useRoute } from '@react-navigation/native'
 
 import { RestaurantImage } from './RestaurantImage'
 import { RestaurantTitle } from './RestaurantTitle'
 import { RestaurantDescription } from './RestaurantDescription'
+
+import { RestaurantType } from '../../types'
 
 const yelpRestaurantInfo = {
   name: 'Farmhouse Kitchen Thai Cuisine',
@@ -21,21 +24,24 @@ const yelpRestaurantInfo = {
   ],
 }
 
-const formattedCategories = yelpRestaurantInfo.categories
-  .map((cat) => cat.title)
-  .join(' • ')
+export const About: FC = () => {
+  const route = useRoute()
+  const item = route.params as RestaurantType
 
-const description = `${formattedCategories} ${
-  yelpRestaurantInfo.price ? ' • ' + yelpRestaurantInfo.price : ''
-} • 🎫 • ${yelpRestaurantInfo.rating} ⭐️ (${yelpRestaurantInfo.reviews}+)`
+  const formattedCategories = item.categories.map((cat) => cat).join(' • ')
 
-export const About: FC = () => (
-  <View style={styles.abourContainer}>
-    <RestaurantImage image={yelpRestaurantInfo.image} />
-    <RestaurantTitle title={yelpRestaurantInfo.name} />
-    <RestaurantDescription description={description} />
-  </View>
-)
+  const description = `${formattedCategories} ${
+    yelpRestaurantInfo.price ? ' • ' + yelpRestaurantInfo.price : ''
+  } • 🎫 • ${yelpRestaurantInfo.rating} ⭐️ (${yelpRestaurantInfo.reviews}+)`
+
+  return (
+    <View style={styles.abourContainer}>
+      <RestaurantImage image={item.image_url} />
+      <RestaurantTitle title={item.name} />
+      <RestaurantDescription description={description} />
+    </View>
+  )
+}
 
 const styles = StyleSheet.create({
   abourContainer: {

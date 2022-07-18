@@ -1,11 +1,13 @@
-export type RestaurantsType = {
+export type RestaurantType = {
   name: string
   image_url: string
   categories: string[]
   price: string
   reviews: number
   rating: number
-}[]
+}
+
+export type RestaurantsType = RestaurantType[]
 
 export type BusinessType = {
   alias: string

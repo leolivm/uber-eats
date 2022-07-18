@@ -20,7 +20,7 @@ export const RestaurantItem: FC<RestaurantItemProps> = (props) => {
         <TouchableOpacity
           key={index}
           activeOpacity={1}
-          onPress={() => navigate('RestaurantDetails')}
+          onPress={() => navigate('RestaurantDetails', item)}
         >
           <View style={styles.container}>
             <RestaurantImage source={item.image_url} />
