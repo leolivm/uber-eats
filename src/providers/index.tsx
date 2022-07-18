@@ -1,6 +1,10 @@
-import { FC } from 'react'
+import { FC, ReactNode } from 'react'
 import { ActiveTabProvider } from './activetab'
 
-export const AppProvider: FC = ({ children }) => (
+type AppProviderProps = {
+  children: ReactNode
+}
+
+export const AppProvider: FC<AppProviderProps> = ({ children }) => (
   <ActiveTabProvider>{children}</ActiveTabProvider>
 )

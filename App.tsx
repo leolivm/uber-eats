@@ -3,14 +3,13 @@ import { StyleSheet, View } from 'react-native'
 
 import { AppProvider } from './src/providers'
 
-import { Home } from './src/screens/Home'
-import { RestaurantDetails } from './src/screens/RestaurantDetails'
+import { RootNavigation } from './src/routes'
 
 export default function App() {
   return (
     <AppProvider>
       <View style={styles.container}>
-        <RestaurantDetails />
+        <RootNavigation />
         <StatusBar style="light" />
       </View>
     </AppProvider>

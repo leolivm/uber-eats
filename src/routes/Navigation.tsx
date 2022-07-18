@@ -14,7 +14,7 @@ export const RootNavigation: FC = () => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={screeOptions}>
+      <Stack.Navigator screenOptions={screeOptions} initialRouteName="Home">
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="RestaurantDetails" component={RestaurantDetails} />
       </Stack.Navigator>

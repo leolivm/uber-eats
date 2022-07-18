@@ -5,6 +5,7 @@ import {
   useContext,
   Dispatch,
   SetStateAction,
+  ReactNode,
 } from 'react'
 
 interface ActiveTabContextData {
@@ -12,11 +13,15 @@ interface ActiveTabContextData {
   setActiveTab: Dispatch<SetStateAction<string>>
 }
 
+interface ActiveProvoderProps {
+  children: ReactNode
+}
+
 const ActiveTabContext = createContext<ActiveTabContextData>(
   {} as ActiveTabContextData,
 )
 
-export const ActiveTabProvider: FC = ({ children }) => {
+export const ActiveTabProvider: FC<ActiveProvoderProps> = ({ children }) => {
   const [activeTab, setActiveTab] = useState('Delivery')
 
   return (

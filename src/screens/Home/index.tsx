@@ -9,7 +9,7 @@ import {
   SearchBar,
   HeaderTabs,
   RestaurantItem,
-  BottomTabs
+  BottomTabs,
 } from '../../components'
 
 import { useActiveTab } from '../../providers/activetab'
@@ -18,7 +18,8 @@ import { restaurantMockData } from '../../components/RestaurantItem/restaurantMo
 import { RestaurantsType, BusinessType } from '../../types'
 
 export const Home: FC = () => {
-  const [restaurants, setRestaurants] = useState<RestaurantsType>(restaurantMockData)
+  const [restaurants, setRestaurants] =
+    useState<RestaurantsType>(restaurantMockData)
   const [city, setCity] = useState('San Francisco')
 
   const { activeTab } = useActiveTab()
@@ -37,7 +38,8 @@ export const Home: FC = () => {
       .then((json) =>
         setRestaurants(
           json.businesses.filter((business: BusinessType) =>
-            business.transactions.includes(activeTab.toLowerCase())),
+            business.transactions.includes(activeTab.toLowerCase()),
+          ),
         ),
       )
   }
@@ -68,6 +70,7 @@ export const Home: FC = () => {
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
+    backgroundColor: '#111',
   },
   container: {
     backgroundColor: '#222',
