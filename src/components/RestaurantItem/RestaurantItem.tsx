@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import { useNavigation } from '@react-navigation/native'
 import { View, StyleSheet, TouchableOpacity } from 'react-native'
 
 import { RestaurantInfo } from './RestaurantInfo'
@@ -10,16 +11,26 @@ type RestaurantItemProps = {
   restaurants: RestaurantsType
 }
 
-export const RestaurantItem: FC<RestaurantItemProps> = (props) => (
-  <TouchableOpacity activeOpacity={1}>
-    {props?.restaurants?.map((item, index) => (
-      <View style={styles.container} key={index}>
-        <RestaurantImage source={item.image_url} />
-        <RestaurantInfo name={item.name} rating={item.rating} />
-      </View>
-    ))}
-  </TouchableOpacity>
-)
+export const RestaurantItem: FC<RestaurantItemProps> = (props) => {
+  const { navigate } = useNavigation()
+
+  return (
+    <>
+      {props?.restaurants?.map((item, index) => (
+        <TouchableOpacity
+          key={index}
+          activeOpacity={1}
+          onPress={() => navigate('RestaurantDetails')}
+        >
+          <View style={styles.container}>
+            <RestaurantImage source={item.image_url} />
+            <RestaurantInfo name={item.name} rating={item.rating} />
+          </View>
+        </TouchableOpacity>
+      ))}
+    </>
+  )
+}
 
 const styles = StyleSheet.create({
   container: {

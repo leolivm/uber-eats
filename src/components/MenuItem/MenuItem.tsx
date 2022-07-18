@@ -33,7 +33,10 @@ const foods = [
 ]
 
 export const MenuItem: FC = () => (
-  <ScrollView showsVerticalScrollIndicator={false}>
+  <ScrollView
+    showsVerticalScrollIndicator={false}
+    style={styles.scrollContainer}
+  >
     {foods.map((food, index) => (
       <View key={index}>
         <View style={styles.container}>
@@ -48,10 +51,14 @@ export const MenuItem: FC = () => (
 )
 
 const styles = StyleSheet.create({
+  scrollContainer: {
+    backgroundColor: '#222',
+  },
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     margin: 20,
+    backgroundColor: '#222',
   },
   divider: {
     marginHorizontal: 20,

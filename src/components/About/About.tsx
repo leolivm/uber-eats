@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 
 import { RestaurantImage } from './RestaurantImage'
 import { RestaurantTitle } from './RestaurantTitle'
@@ -30,9 +30,15 @@ const description = `${formattedCategories} ${
 } • 🎫 • ${yelpRestaurantInfo.rating} ⭐️ (${yelpRestaurantInfo.reviews}+)`
 
 export const About: FC = () => (
-  <View>
+  <View style={styles.abourContainer}>
     <RestaurantImage image={yelpRestaurantInfo.image} />
     <RestaurantTitle title={yelpRestaurantInfo.name} />
     <RestaurantDescription description={description} />
   </View>
 )
+
+const styles = StyleSheet.create({
+  abourContainer: {
+    backgroundColor: '#222',
+  },
+})

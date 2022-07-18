@@ -18,8 +18,7 @@ import { restaurantMockData } from '../../components/RestaurantItem/restaurantMo
 import { RestaurantsType, BusinessType } from '../../types'
 
 export const Home: FC = () => {
-  const [restaurants, setRestaurants] =
-    useState<RestaurantsType>(restaurantMockData)
+  const [restaurants, setRestaurants] = useState<RestaurantsType>(restaurantMockData)
   const [city, setCity] = useState('San Francisco')
 
   const { activeTab } = useActiveTab()

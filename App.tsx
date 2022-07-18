@@ -3,13 +3,13 @@ import { StyleSheet, View } from 'react-native'
 
 import { AppProvider } from './src/providers'
 
-import { RootNavigation } from './src/routes'
+import { Routes } from './src/routes'
 
 export default function App() {
   return (
     <AppProvider>
       <View style={styles.container}>
-        <RootNavigation />
+        <Routes />
         <StatusBar style="light" />
       </View>
     </AppProvider>
