@@ -1,22 +1,33 @@
 import { FC } from 'react'
+import { useRoute } from '@react-navigation/native'
 import { View, StyleSheet } from 'react-native'
 import { Divider } from 'react-native-elements'
 
-import { About, MenuItem } from '../../components'
+import { About, MenuItem, ViewCart } from '../../components'
 
-export const RestaurantDetails: FC = () => (
-  <View style={styles.viewContainer}>
-    <About />
+import { RestaurantType } from '../../types'
 
-    <Divider width={1.8} style={styles.container} />
+export const RestaurantDetails: FC = () => {
+  const route = useRoute()
+  const { name } = route.params as RestaurantType
 
-    <MenuItem />
-  </View>
-)
+  return (
+    <View style={styles.viewContainer}>
+      <About />
+
+      <Divider width={1.8} style={styles.container} />
+
+      <MenuItem />
+
+      <ViewCart restaurantName={name} />
+    </View>
+  )
+}
 
 const styles = StyleSheet.create({
   viewContainer: {
     backgroundColor: '#222',
+    position: 'relative',
   },
   container: {
     marginVertical: 20,
