@@ -13,7 +13,7 @@ interface ActiveTabContextData {
   setActiveTab: Dispatch<SetStateAction<string>>
 }
 
-interface ActiveProvoderProps {
+interface ActiveProviderProps {
   children: ReactNode
 }
 
@@ -21,7 +21,7 @@ const ActiveTabContext = createContext<ActiveTabContextData>(
   {} as ActiveTabContextData,
 )
 
-export const ActiveTabProvider: FC<ActiveProvoderProps> = ({ children }) => {
+export const ActiveTabProvider: FC<ActiveProviderProps> = ({ children }) => {
   const [activeTab, setActiveTab] = useState('Delivery')
 
   return (
