@@ -41,25 +41,23 @@ const foods = [
     image:
       'https://images.themodernproper.com/billowy-turkey/production/posts/2019/Easy-italian-salad-recipe-10.jpg?w=1200&h=1200&q=82&fm=jpg&fit=crop&fp-x=0.5&fp-y=0.5&dm=1614096227&s=c0f63a30cef3334d97f9ecad14be51da',
   },
-  {
-    title: 'Lasagna',
-    description: 'With butter lettuce, tomato and sauce bechamel',
-    price: '$13.50',
-    image: 'https://github.com/leolivm.png',
-  },
 ]
 
 export const MenuItem: FC = () => {
   const route = useRoute()
   const { name } = route.params as RestaurantType
 
-  const { addToCart } = useCart()
+  const { addToCart, cart } = useCart()
+  const { items } = cart!
 
   const handleAddToCart = (food: Items, checkBox: boolean) => {
     const item = { items: [food], restaurantName: name }
 
     addToCart(item, checkBox)
   }
+
+  const handleFoodInCart = (food: Items) =>
+    Boolean(items.find((item) => item?.title === food.title))
 
   return (
     <ScrollView
@@ -73,6 +71,7 @@ export const MenuItem: FC = () => {
               iconStyle={styles.bouncyCheckbox}
               fillColor="green"
               onPress={(checkBox) => handleAddToCart(food, checkBox)}
+              isChecked={handleFoodInCart(food)}
             />
 
             <FoodInfo food={food} />
