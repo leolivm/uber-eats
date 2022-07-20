@@ -53,7 +53,7 @@ export const MenuItem: FC = () => {
   const route = useRoute()
   const { name } = route.params as RestaurantType
 
-  const { addToCart, cart } = useCart()
+  const { addToCart } = useCart()
 
   const handleAddToCart = (food: Items, checkBox: boolean) => {
     const item = { items: [food], restaurantName: name }
