@@ -1,10 +1,7 @@
 export type RestaurantType = {
   name: string
   image_url: string
-  categories: {
-    alias: string
-    title: string
-  }[]
+  categories: string[]
   price: string
   reviews: number
   rating: number
@@ -46,4 +43,16 @@ export type BusinessType = {
   review_count: number
   transactions: [string]
   url: string
+}
+
+export type Items = {
+  title: string
+  description: string
+  price: string
+  image: string
+}
+
+export type CartType = {
+  restaurantName: string
+  items: (Items | undefined)[]
 }

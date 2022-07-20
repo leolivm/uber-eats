@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
   viewContainer: {
     backgroundColor: '#222',
     position: 'relative',
+    flex: 1,
   },
   container: {
     marginVertical: 20,
