@@ -1,8 +1,8 @@
 import { FC, Dispatch, SetStateAction } from 'react'
 import { View, StyleSheet, Text } from 'react-native'
-import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import AntDesign from 'react-native-vector-icons/AntDesign'
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete'
 
 import { GOOGLE_PLACES_API_KEY } from '@env'
 
@@ -30,7 +30,7 @@ export const SearchBar: FC<SearchBarProps> = ({ cityHandler }) => (
           <Text style={styles.searchText}>Search</Text>
         </View>
       )}
-      onPress={(data, details = null) => {
+      onPress={(data) => {
         const city = data.description.split(',')[0]
         cityHandler(city)
       }}

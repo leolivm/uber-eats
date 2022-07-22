@@ -1,6 +1,6 @@
 import { FC } from 'react'
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 import FontAwesome from 'react-native-vector-icons/FontAwesome5'
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 
 type BottomIconProps = {
   icon: string
