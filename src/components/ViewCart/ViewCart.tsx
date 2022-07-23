@@ -28,11 +28,11 @@ export const ViewCart: FC = () => {
 
   const handleAddOrder = () => {
     setLoading(true)
+    setModalVisible(false)
 
     setTimeout(() => {
       setLoading(false)
 
-      setModalVisible(false)
       navigate('OrderCompleted', {
         restaurantName: restaurantName!,
         totalUSD: totalUSD!,
