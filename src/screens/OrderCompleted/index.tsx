@@ -32,7 +32,7 @@ export const OrderCompleted: FC = () => {
 
           <MenuItem foods={cart!.items} hideCheckbox />
           <LottieView
-            style={styles.lottieViewCheckCooking}
+            style={styles.lottieViewCooking}
             source={require('../../assets/animations/cooking.json')}
             autoPlay
             speed={0.5}
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginBottom: 30,
   },
-  lottieViewCheckCooking: {
+  lottieViewCooking: {
     height: 200,
     alignSelf: 'center',
   },
@@ -66,5 +66,6 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 20,
     fontWeight: 'bold',
+    marginHorizontal: 15,
   },
 })

@@ -1,4 +1,5 @@
 import { FC, useState } from 'react'
+import LottieView from 'lottie-react-native'
 import { useNavigation } from '@react-navigation/native'
 import { View, Text, TouchableOpacity, StyleSheet, Modal } from 'react-native'
 
@@ -8,6 +9,8 @@ import { useCart } from '../../providers/cart'
 
 export const ViewCart: FC = () => {
   const [modalVisible, setModalVisible] = useState(false)
+  const [loading, setLoading] = useState(false)
+
   const { navigate } = useNavigation()
 
   const { cart } = useCart()
@@ -24,11 +27,17 @@ export const ViewCart: FC = () => {
   })
 
   const handleAddOrder = () => {
-    setModalVisible(false)
-    navigate('OrderCompleted', {
-      restaurantName: restaurantName!,
-      totalUSD: totalUSD!,
-    })
+    setLoading(true)
+
+    setTimeout(() => {
+      setLoading(false)
+
+      setModalVisible(false)
+      navigate('OrderCompleted', {
+        restaurantName: restaurantName!,
+        totalUSD: totalUSD!,
+      })
+    }, 2000)
   }
 
   const handleCheckoutModalContent = () => (
@@ -88,6 +97,16 @@ export const ViewCart: FC = () => {
         </View>
       ) : (
         <></>
+      )}
+      {loading && (
+        <View style={styles.loadingContainer}>
+          <LottieView
+            source={require('../../assets/animations/scanner.json')}
+            style={styles.lottieContainer}
+            autoPlay
+            speed={3}
+          />
+        </View>
       )}
     </>
   )
@@ -200,5 +219,17 @@ const styles = StyleSheet.create({
   },
   closeButtonText: {
     color: 'white',
+  },
+  loadingContainer: {
+    backgroundColor: 'black',
+    position: 'absolute',
+    opacity: 0.6,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100%',
+    width: '100%',
+  },
+  lottieContainer: {
+    height: 200,
   },
 })

@@ -13,7 +13,6 @@ import { Items, RestaurantType } from '../../types'
 type MenuItemProps = {
   foods: (Items | undefined)[]
   hideCheckbox?: boolean
-  marginLeft?: number
 }
 
 export const MenuItem: FC<MenuItemProps> = (props) => {
@@ -50,7 +49,7 @@ export const MenuItem: FC<MenuItemProps> = (props) => {
             )}
 
             <FoodInfo food={food!} />
-            <FoodImage image={food!.image} marginLeft={props.marginLeft ?? 0} />
+            <FoodImage image={food!.image} />
           </View>
 
           <Divider
