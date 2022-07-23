@@ -5,13 +5,15 @@ import { Divider } from 'react-native-elements'
 import { About, MenuItem } from '../../components'
 import { ViewCart } from '../../components/ViewCart'
 
+import { foods } from './foods'
+
 export const RestaurantDetails: FC = () => (
   <View style={styles.viewContainer}>
     <About />
 
     <Divider width={1.8} style={styles.container} />
 
-    <MenuItem />
+    <MenuItem foods={foods} />
 
     <ViewCart />
   </View>

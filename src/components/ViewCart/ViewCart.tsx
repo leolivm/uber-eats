@@ -1,4 +1,5 @@
 import { FC, useState } from 'react'
+import { useNavigation } from '@react-navigation/native'
 import { View, Text, TouchableOpacity, StyleSheet, Modal } from 'react-native'
 
 import { OrderItem } from '..'
@@ -7,6 +8,7 @@ import { useCart } from '../../providers/cart'
 
 export const ViewCart: FC = () => {
   const [modalVisible, setModalVisible] = useState(false)
+  const { navigate } = useNavigation()
 
   const { cart } = useCart()
   const items = cart?.items
@@ -21,10 +23,24 @@ export const ViewCart: FC = () => {
     currency: 'USD',
   })
 
+  const handleAddOrder = () => {
+    setModalVisible(false)
+    navigate('OrderCompleted', {
+      restaurantName: restaurantName!,
+      totalUSD: totalUSD!,
+    })
+  }
+
   const handleCheckoutModalContent = () => (
     <View style={styles.modalContainer}>
       <View style={styles.modalCheckoutContainer}>
         <Text style={styles.restaurantName}>{restaurantName}</Text>
+        <TouchableOpacity
+          style={styles.closeButtonContainer}
+          onPress={() => setModalVisible(false)}
+        >
+          <Text style={styles.closeButtonText}>X</Text>
+        </TouchableOpacity>
         {items?.map((item, index) => (
           <OrderItem key={index} title={item!.title} price={item!.price} />
         ))}
@@ -35,7 +51,7 @@ export const ViewCart: FC = () => {
         <View style={styles.touchableWrapper}>
           <TouchableOpacity
             style={styles.touchableContainer}
-            onPress={() => setModalVisible(false)}
+            onPress={() => handleAddOrder()}
           >
             <Text style={styles.checkoutButtonText}>Checkout</Text>
             <Text style={styles.checkoutTotalText}>
@@ -168,5 +184,21 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 15,
     top: 17,
+  },
+  closeButtonContainer: {
+    position: 'absolute',
+    right: 15,
+    top: 20,
+    borderRadius: 9,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: 'white',
+    width: 18,
+    height: 18,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  closeButtonText: {
+    color: 'white',
   },
 })

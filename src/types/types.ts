@@ -59,3 +59,8 @@ export type CartType = {
   restaurantName: string
   items: (Items | undefined)[]
 }
+
+export type OrderCompletedType = {
+  restaurantName: string
+  totalUSD: string
+}
